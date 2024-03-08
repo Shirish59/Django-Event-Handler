@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+   
+{% block title %}Events{% endblock title %}
+
+{% block body %}
+   {% load static %}
+   <section>
+    <!-- image_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1>{{ image.heading }}</h1>
+</head>
+<body>
+    <div class="containers">
+        <div class="item">
+            <img style="max-width:300px" src="{{ image.image.url }}" class="img-fluid" alt="{{ image.caption }}">
+            <p class="lead">{{ image.caption }}</p>
+        </div>
+    </div>
+</body>
+</html>
+
+   </section>
+   {% endblock body %}

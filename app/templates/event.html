@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+   
+{% block title %}Events{% endblock title %}
+
+{% block body %}
+   {% load static %}
+   <section>
+      <div class="event">
+         <h2>Upcoming Events</h2>
+      </div>
+      <div class="containers">
+         {% for x in pics %}
+            <div class="item">
+               <p>ID: {{ x.id }}</p>
+               <img style='max-width:300px'src="{{ x.image.url }}" class="img-fluid" alt="{{ x.caption }}">
+               <h3>{{ x.heading }}</h3>
+               <p class="lead">{{ x.caption|truncatechars:100 }}</p>
+               <p>{{ post.body|safe|truncatewords:"200"|linebreaks }}</p>
+               <a href="{% url 'image_detail' image_id=x.id %}">read more</a>
+               <div class="booking-button">
+                  <button onclick="window.open('{{ x.booking_link }}', '_blank')" class="btn btn-success">Book Tickets</button>
+               </div>
+               <hr>
+            </div>
+         {% endfor %}
+      </div>
+   
+      <div class="event">
+         <h2>Recent Events</h2>
+      </div>
+      <div class="containers">
+         {% for y in rimage %}
+            <div class="item">
+               <p>ID: {{ y.id }}</p>
+               <img style='max-width:300px'src="{{ y.image.url }}" class="img-fluid" alt="{{ y.caption }}">
+               <h3>{{ y.heading }}</h3>
+               <p class="lead">{{ y.caption|truncatechars:100 }}</p>
+               <p>{{ post.body|safe|truncatewords:"200"|linebreaks }}</p>
+               <a href="{% url 'recent_image_detail' image_id=y.id %}">read more</a>
+               <hr>
+            </div>
+         {% endfor %}
+      </div>   
+   </section>
+{% endblock body %}
